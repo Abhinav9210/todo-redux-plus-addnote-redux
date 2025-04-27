@@ -25,7 +25,7 @@ const initialState={
         },
         toggle:(state,action)=>{
             state.todos.map((todo,index)=>{
-                if(index==action.payload){
+                if(index===action.payload){
                     todo.completed=!todo.completed
                 }
                 return todo;
@@ -34,8 +34,8 @@ const initialState={
     }
 })
 export const todoReducer = todoSlice.reducer
-
-
+export const actions = todoSlice.actions
+export const todoSelector = (state)=>state.todoReducer.todos
 
 
 

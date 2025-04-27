@@ -3,11 +3,13 @@
 import { createSlice } from "@reduxjs/toolkit"
 
  
-const initialState={
-    notes:[{text:"Go to Gym at 6", createdOn: new Date()},
-    {text: "Study at 8", createdOn: new Date()}
+const initialState = {
+    notes: [
+      { text: "Go to Gym at 6", createdOn: new Date().toISOString() },
+      { text: "Study at 8", createdOn: new Date().toISOString() }
     ]
-}
+  }
+  
     
  const noteSlice = createSlice({
     name:"notes",
@@ -16,7 +18,7 @@ const initialState={
         add:(state,action)=>{
             state.notes.push({
                 text:action.payload,
-                createdOn:new Date()
+                createdOn:new Date().toISOString()
             })
         },
         delete:(state,action)=>{
@@ -26,6 +28,8 @@ const initialState={
     }
 })
 export const noteReducer = noteSlice.reducer
+export const actions = noteSlice.actions
+export const noteSelector = (state)=>state.noteReducer.notes
 
 
 // export function noteReducer(state=initialState, action){
